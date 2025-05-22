@@ -1,16 +1,21 @@
 package org.example.models;
 
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
-import nonapi.io.github.classgraph.json.Id;
+
 import org.example.models.DataTransferObject.UserDTO;
 
-@Data
+@Entity
+@Table(name = "users")
 @Getter @Setter
 public class User {
     @Id
-    private Long email;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String email;
     private String password;
 
     public User(){
